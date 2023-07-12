@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    color: #94af00;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus{
+    color: #044a48;
+}
+
+.navbar{
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    justify-content: space-between;
+    align-items: center;
+    background: #044a48;
+    padding: 0.3125em 5%;
+}
+
+.nb-left, .nb-right{
+    display: flex;
+    align-items: center;
+}
+
+.creaPostNavBar, .notifications-user{
+    width: 2.8em;
+    height: 2.8em;
+    margin-left: 7%;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    filter: invert(100%) sepia(23%) saturate(1083%) hue-rotate(49deg) brightness(128%) contrast(100%)
+}
+
+.contNotifications{
+    position: relative;
+}
+.contNotifications::after{
+    z-index: 101;
+    content: attr(data-after);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #94af00;
+    border: 2px solid #404040;
+    border-radius: 50%;
+    text-align: center;
+}
+
+/* .contNotifications{
+
+} */
+.fotoLogo{
+    width: 100%;
+    height: auto;
+}
+
+.redirectFotoLogo{
+    width: 230px;
+}
+
+.dropdown-menu-user-inner, .dropdown-notifications-inner{
+    padding: 1.25em;
+}
+
+.dropdown-notifications{
+    position: absolute;
+    z-index: 999;
+    top: 110%;
+    left: 22%;
+    width: 23em;
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.5s max-height;
+}
+
+.dropdown-menu-user{
+    position: absolute;
+    z-index: 999;
+    top: 110%;
+    right: 5%;
+    width: 21.875em;
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.5s max-height;
+}
+
+.dropdown-menu-user.active, .dropdown-notifications.active{
+    max-height: fit-content;
+}
+
+.dropdown-menu-user-inner img, .searchUsersBoxInner img{
+    float: left;
+    margin-right: 1em;
+}
+
+.dropdown-menu-user-inner p, .dettagliProfilo p{
+    color: #404040;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 0.35em;
+    margin-left: 4em;
+    cursor: default;
+}
+
+.dropdown-menu-user hr, .searchUsersBox hr, .dropdown-notifications hr{
+    border: 0;
+    height: 1px;
+    background: #404040;
+    margin: .7em 0;
+}
+
+.fotoLogout, .fotoSettings, .fotoFeedBack{
+    position: absolute;
+    width: 3.5em;
+    height: auto;
+}
+
+.modified-a{
+    margin-left: 4.5em;
+}
+
+.biografia-p{
+    color: #94af00;
+    cursor: pointer;
+}
+
+.noPost{
+    color: #404040;
+    font-size: 1.5em;
+}
+
+.fotoProfilo, .fotoProfiloCercato, .fotoProfiloPost, .fotoProfiloNotifica{
+    position: relative;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.fotoProfiloNotifica{
+    float: left;
+}
+
+.dettagliNotifica{
+    margin-left: 25%;
+}
+.dropdown-notifications hr{
+    margin-top: 7%;
+}
+
+.actionsNotifica{
+    margin-top: 2%;
+}
+
+.dettagliNotifica a{
+    text-decoration: none;
+}
+
+.dettagliNotifica span {
+    cursor: default;
+}
+
+.dettagliNotifica .accept {
+    color: #FFF;
+    background: #44CC44;
+    padding: 5px 10px;
+    box-shadow: 0 4px 0 0 #2EA62E;
+    margin-right: 20%;
+}
+.dettagliNotifica .accept:hover {
+    background: #6FE76F;
+    box-shadow: 0 4px 0 0 #7ED37E;
+}
+.dettagliNotifica .deny {
+    color: #FFF;
+    background: tomato;
+    padding: 5px 10px;
+    box-shadow: 0 4px 0 0 #CB4949;
+}
+.dettagliNotifica .deny:hover {
+    background: rgb(255, 147, 128);
+    box-shadow: 0 4px 0 0 #EF8282;
+}

@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    position: relative;
+    color: #94af00; /*color of the login*/
+    font-weight: 900;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+    border-bottom: 3px solid  #94af00; /*color of the underline login*/
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+/* caratteristiche h1 dentro la form */
+h2{
+    position: relative;
+    color: #404040; /*color of the login*/
+    font-weight: 600;
+    font-size: 1.2em;
+    margin-bottom: 1%;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+a{
+    color: #94af00;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus{
+    color: #044a48;
+}
+
+/*caratteristiche bottone*/
+button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 15px;
+}
+
+button:before{
+    content: '';
+    background: linear-gradient(45deg, #94af00, #0b8980, #94af00);
+    position: relative;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 15px;
+}
+
+button:active{
+    color: #000
+}
+
+button:active:after{
+    background: transparent;
+}
+
+button:hover:before{
+    opacity: 1;
+}
+
+button:after{
+    z-index: -1;
+    content: '';
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+}
+
+.fotoPostImg{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.containerCreatePost{
+    padding: 5% 27% 0% 27%;
+}
+
+.innerContainerPost{
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    align-items: center;
+}
+
+.innerContainerPost h1{
+    margin-bottom: -1%;
+    border: none;
+}
+
+.descrizioneCreaPostBox{
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+.descrizioneCreaPostBox textarea{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    resize: none;
+    color: #404040;
+    border-bottom: 1px solid #404040;
+    background: transparent;
+    margin-top: 3%;
+}

@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*caratteristiche bottone*/
+h1{
+    position: relative;
+    color: #94af00; /*color of the login*/
+    font-weight: 900;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+    border-bottom: 3px solid  #94af00; /*color of the underline login*/
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+a{
+    color: #94af00;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus{
+    color: #044a48;
+}
+
+button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 15px;
+}
+
+button:before{
+    content: '';
+    background: linear-gradient(45deg, #94af00, #0b8980, #94af00);
+    position: relative;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 15px;
+}
+
+button:active{
+    color: #000
+}
+
+button:active:after{
+    background: transparent;
+}
+
+button:hover:before{
+    opacity: 1;
+}
+
+button:after{
+    z-index: -1;
+    content: '';
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+}
+
+
+.fotoProfilo, .fotoProfiloCercato, .fotoProfiloPost{
+    position: relative;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.searchBox{
+    padding-right: 3em;
+}
+
+.searchInput{
+    width: 30em;
+    padding: 0.75em 1.5em;
+
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 0.95em;
+    line-height: 1.5em;
+    
+    color: #94af00;
+    background-color: transparent;
+
+    background-image: url("../assets/search_icon.png");
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    background-position: 95% center;
+    border-radius: 25px;
+    border: 1px solid #94af00;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.searchInput::placeholder{
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+}
+
+.searchInput:hover,
+.searchInput:focus{
+        padding: 0.75em 0;
+        outline: 0;
+        border: 1px solid transparent;
+        border-bottom: 1px solid #94af00;
+        border-radius: 0;
+        background-position: 100% center;
+}
+
+.searchUsersBoxInner, .postsProfileInner, .chatBoxInner, .feedBoxInner{
+    padding: 1.25em;
+}
+
+.mainContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8125em 5%;
+    width: 100%;
+    background-color: #efefef;
+}
+
+.chatBox{
+    flex-basis: 25%;
+    top: 4.375em;
+    align-self: flex-start;
+    background-color: white;
+    position: sticky;
+    z-index: 1;
+    padding: 1% 1%;
+    text-align: center;
+}
+
+.chatBoxInner{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+.feedBox{
+    flex-basis: 47%;
+    background-color: white;
+    width: 100%;
+}
+
+.feedBoxInner{
+    width: 100%;
+    height: fit-content;
+}
+
+.searchUsersBox{
+    flex-basis: 25%;
+    top: 4.375em;
+    align-self: flex-start;
+    justify-content: center;
+    background-color: white;
+    position: sticky;
+    z-index: 1;
+    padding: 1% 1%;
+}
+
+.searchUsersBox p, .feedBox h6, .chatBox p{
+    color: #404040;
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-bottom: 0.35em;
+    cursor: default;
+}
+
+.chatBox, .feedBox, .searchUsersBox{
+    height: 78vh;
+    overflow-y: scroll;
+}
+
+.chatBox::-webkit-scrollbar, .feedBox::-webkit-scrollbar, .searchUsersBox::-webkit-scrollbar{
+    display: none;
+}
+
+.footer{
+    text-align: center;
+    padding: 0.3em 0 .3em 0;
+}
+
+.fotoLogout, .fotoSettings, .fotoFeedBack{
+    position: absolute;
+    width: 3.5em;
+    height: auto;
+}
+
+.modified-a{
+    margin-left: 4.5em;
+}
+
+.biografia-p{
+    color: #94af00;
+    cursor: pointer;
+}
+
+.utenteCercato{
+    cursor: pointer;
+}
+
+.mainContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8125em 5%;
+    width: 100%;
+    background-color: #efefef;
+}
+
+.fotoProfiloFeed{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    object-fit: cover;
+    float: left;
+    margin-right: 5%;
+}
+
+.headerPostFeed{
+    height: 10%;
+    display: table;
+}
+
+.usernameProfiloFeed{
+    margin-bottom: -2%;
+    color: #94af00;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: -2%;
+}
+
+.fotoPostFeed{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.fotoLikeAz{
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin: 3% 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.descrizioneFeedPost p{
+    margin-top: 2%;
+    color: #404040;
+    font-size: 1em;
+    display: block;
+    font-weight: 400;
+}
+
+.dataPost{
+    color: #8c8a8a;
+    font-size: 0.9em;
+}
+
+.azioniPost{
+    margin-top: 2%;
+}
+
+.azioniPost img{
+    margin-right: 0.8em;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.fotoCommentoAz{
+    width: 1.3em;
+    height: 1.3em;
+}
+.fotoLike{
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.likePost, .commentPost{
+    display: inline-block;
+    align-items: center;
+    margin-right: 1.8em;
+}
+
+.azioniPost span{
+    cursor: default;
+}
+
+.modalPost{
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border-radius: 10px;
+    z-index: 2;
+    background-color: white;
+    z-index: 50;
+    width: 1000px;
+    height: 500px;
+}
+
+.modalPost.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modalPost .chiudiModal{
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #404040;
+    border: none;
+    outline: none;
+    background: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.modalPostBody{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.overlay{
+    position: fixed;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.overlay.active{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.imgPost{
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.postData{
+    width: 45%;
+    height: 100%;
+    margin: 0 5%;
+    overflow: scroll;
+}
+
+.postData::-webkit-scrollbar{
+    display: none;
+}
+
+.headerPostData{
+    margin-top: 7%;
+    display: table;
+}
+
+.headerPostData h1{
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.fotoProfiloModal{
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    object-fit: cover;
+    float: left;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+
+.dataPost{
+    color: #8c8a8a;
+    font-size: 0.9em;
+}
+
+.fotoLike{
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin: 3% 0;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.likePost{
+    display: inline-block;
+    margin-top: 1em;
+}
+
+.descrizioneModalPost p{
+    margin-top: 2%;
+    color: #404040;
+    font-size: 1em;
+    margin-bottom: 2%;
+    display: block;
+    font-weight: 400;
+}
+
+.postData textarea{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    resize: none;
+    color: #404040;
+    border-bottom: 1px solid #404040;
+    background: transparent;
+    margin-top: 1%;
+}
+
+.btnAggiungiCommento{
+    margin-bottom: 3%;
+}
+
+.commentiBox{
+    width: 100%;
+    margin-top: 2%;
+}
+
+.fotoProfiloCommento{
+    position: relative;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    float: left;
+}
+
+.commentoDettagli{
+    margin-left: 18%;
+    height: fit-content;
+}
+
+.commento{
+    margin-top: 3%;
+    height: fit-content;
+}
+
+.commentoDettagli p{
+    margin-bottom: .5%;
+}
+
+.commento span{
+    color: #404040;
+    font-size: 0.9em;
+    font-weight: 400;
+    width: fit-content;
+    max-width: 60%;
+}
+
+.commento hr{
+    margin-top: 5%;
+}
+
+
+@media screen and (max-width: 768px){
+
+    .searchInput{
+        width: 20em;
+        padding: 0.75em 1.5em;
+    }
+
+    .searchBox{
+        padding-right: 3em;
+    }
+    
+    .redirectFotoLogo{
+        width: 230px;
+    }
+
+    .fotoLogo{
+        width: 100%;
+        height: auto;
+    }
+
+    .dropdown-menu-user{
+        width: 19em;
+    }
+
+    .feedBox{
+        flex-basis: 45%;
+        background-color: white;
+        height: fit-content;
+    }
+    
+    .feedBoxInner{
+        width: 100%;
+        height: 78vh;
+    }
+
+    .searchUsersBoxInner p, .dettagliProfilo p{
+        font-size: 1em;
+    }
+
+    .biografia-p{
+        color: #94af00;
+        cursor: pointer;
+        display: none;
+    }
+
+    .modalPostBody{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+
+    .modalPost{
+        position: fixed;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: 200ms ease-in-out;
+        border-radius: 10px;
+        z-index: 2;
+        background-color: white;
+        z-index: 50;
+        width: 700px;
+        height: 370px;
+    }
+
+    .fotoProfiloCommento{
+        position: relative;
+        width: 3.0em;
+        height: 3.0em;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        float: left;
+    }
+
+
+
+}

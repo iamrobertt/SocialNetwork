@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+span{
+    cursor: default;
+}
+
+.dettagliProfilo{
+    display: flex;
+    padding: 5% 10%;
+    width: 100%;
+    height: fit-content;
+}
+
+.fotoProfiloProfile{
+    float: left;
+    position: relative;
+    width: 18em;
+    height: 18em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dataProfilo{
+    position: relative;
+    margin-left: 17%;
+    height: fit-content;
+    width: 100%;
+}
+
+.dettagliProfilo h1{
+    font-size: 2em;
+}
+
+.followposts{
+    display: flex;
+    position: absolute;
+    margin-top: 13%;
+    justify-content: space-around;
+    width: fit-content;
+    height: fit-content;
+}
+
+.postsCount, .followers, .following{
+    width: 12.5em;
+    max-width: 12.5em;
+    height: fit-content;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #404040;
+}
+
+.postsCount{
+    margin-left: -14%;
+}
+
+.followposts span, .followposts .spanText{
+    color: #94af00;
+    font-size: 1.1em;
+    margin: 0 auto;
+    display: table;
+    margin-top: -10%;
+}
+
+.followposts .spanText{
+    color: #404040;
+}
+
+.detailPostsCount, .detailFollowers, .detailFollowing{
+    width: 100%;
+    height: fit-content;
+}
+
+.biografiaBox{
+    display: block;
+    margin-top: 22%;
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+}
+
+.biografiaProfilo{
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.followModify{
+    margin-top: 27%;
+    position: absolute;
+    width: 65%;
+    height: fit-content;
+}
+
+.hr-profilo{
+    margin-top: 3.5%;
+    margin-left: 10%;
+    width: 85%;
+    border: 0;
+    height: 2px;
+    background: #404040;
+}
+
+.postsProfile{
+    width: 90%;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    margin: 0% 5%;
+}
+
+.postsProfileInner{
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
+
+.noPost{
+    color: #404040;
+    font-size: 1.8em;
+}
+
+.azioniPost img{
+    width: 1.1em;
+    height: 1.1em;
+    margin-right: 0.8em;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.likePost, .commentPost{
+    display: inline-block;
+    align-items: center;
+    margin-right: 1.8em;
+}
+
+.azioniPost span{
+    cursor: default;
+}

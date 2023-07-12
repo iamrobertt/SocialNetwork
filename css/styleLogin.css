@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1{
+    position: relative;
+    color: #94af00; /*color of the login*/
+    font-weight: 900;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+    border-bottom: 3px solid  #94af00; /*color of the underline login*/
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+/* caratteristiche h1 dentro la form */
+h2{
+    position: relative;
+    color: #404040; /*color of the login*/
+    font-weight: 600;
+    font-size: 1.2em;
+    margin-bottom: 7%;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.inputBox input{
+    width: 100%;
+    padding: 4%;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #404040;
+    font-size: 1em;
+    letter-spacing: 1px;
+    color: #404040;
+    border: none;
+    border-bottom: 1px solid #404040;
+    padding-left: 16%;
+}
+
+.inputBox input :-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 30px white inset !important;
+}
+
+.inputBox{
+    margin-bottom: 5.3%;
+}
+
+section{
+    background-color: white;
+    padding: 3% 3%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/*contenitore dell'immagine e della form*/
+.cont{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 100% !important;
+    display: flex;
+    box-shadow: 10px 10px 10px grey;
+    border-radius: 30px;
+    animation: slideInFromLeft 1.5s ease-in-out;
+}
+
+.loginBox, .register1Box, .register2Box, .register3Box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    /*background-color: white;*/
+}
+
+.register3Box textarea{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    resize: none;
+    color: #404040;
+    border-bottom: 1px solid #404040;
+    background: transparent;
+    margin-top: 2%;
+}
+.formBox{
+    width: 50%;
+}
+
+/* metà dell'immagine */
+section .cont .imageBox{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    animation: copriEScopri 2s ease-in-out;
+}
+
+section .cont .imageBox:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*immagine nella box dell'imagine */
+section .cont .imageBox img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    /* animation: rotate3d 4s linear infinite; */
+}
+
+.inputBox img{
+    filter: invert(0%) sepia(1%) saturate(5973%) hue-rotate(326deg) brightness(102%) contrast(87%);
+    position: absolute;
+    width: 3.5em;
+    height: 3.5em;
+}
+
+/*caratteristiche bottone*/
+button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 15px;
+}
+
+button:before{
+    content: '';
+    background: linear-gradient(45deg, #94af00, #0b8980, #94af00);
+    position: relative;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 15px;
+}
+
+button:active{
+    color: #000
+}
+
+button:active:after{
+    background: transparent;
+}
+
+button:hover:before{
+    opacity: 1;
+}
+
+button:after{
+    z-index: -1;
+    content: '';
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 15px;
+}
+
+/*caratteristiche paragrafo nel caso voglia registrarsi*/
+.inputBox p{
+    color: #404040;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin-top: 5%;
+    cursor: default;
+}
+
+/*caratteristiche link */
+a{
+    color: #94af00;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus{
+    color: #044a48;
+}
+
+/*parte 1*/
+.emailLogin.focus, .passwordLogin.focus{
+    animation: changeBorderColor 1s ease-out infinite;
+}
+
+img.emailLogin.focus, img.passwordLogin.focus{
+    animation: changeIconColor 1s ease-in-out infinite;
+    filter: invert(0%) sepia(1%) saturate(5973%) hue-rotate(326deg) brightness(102%) contrast(87%);
+}
+
+/*parte 2*/
+.nomeRegistrazione.focus, .cognomeRegistrazione.focus, .emailRegistrazione.focus, .passwordRegistrazione.focus, .passwordRegistrazioneConferma.focus{
+    animation: changeBorderColor 1s ease-out infinite;
+}
+
+img.nomeRegistrazione.focus, img.cognomeRegistrazione.focus, img.emailRegistrazione.focus, img.passwordRegistrazione.focus, img.passwordRegistrazioneConferma.focus{
+    animation: changeIconColor 1s linear infinite;
+    filter: invert(0%) sepia(1%) saturate(5973%) hue-rotate(326deg) brightness(102%) contrast(87%);
+}
+
+/*parte 3*/
+.telefonoRegistrazione.focus{
+    animation: changeBorderColor 1s ease-out infinite;
+}
+img.telefonoRegistrazione.focus{
+    animation: changeIconColor 1s linear infinite;
+    filter: invert(0%) sepia(1%) saturate(5973%) hue-rotate(326deg) brightness(102%) contrast(87%);
+}
+
+
+/*miglior layout per le select*/
+select {
+    width: fit-content;
+    color: #404040;
+    margin-bottom: 1em;
+    padding: 0.25em;
+    border: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 0;
+}
+
+select:focus, select:active {
+    outline: 0;
+}
+
+option{
+    color: white;
+    background-color: #404040;
+}
+
+.modalPost{
+    display: block;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border-radius: 10px;
+    z-index: 2;
+    background-color: white;
+    z-index: 50;
+    width: 700px;
+    height: 270px;
+}
+
+.modalPost.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modalPost .chiudiModal{
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #404040;
+    border: none;
+    outline: none;
+    background: none;
+    width: fit-content;
+    height: fit-content;
+}
+
+.modalPostBody{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.modalPostBodyInner{
+    padding: 4%;
+    width: 100%;
+    height: 100%;
+}
+
+.modalPostBodyInner input{
+    margin-top: 3%;
+    width: 100%;
+    margin-bottom: 3%;
+    outline: none;
+    font-weight: 400;
+    font-size: 1em;
+    letter-spacing: 1px;
+    color: #404040;
+    border: none;
+    border-bottom: 1px solid #404040;
+}
+
+.overlay{
+    position: fixed;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.overlay.active{
+    pointer-events: all;
+    opacity: 1;
+}
+
+.passwordDimenticata{
+    font-size: 0.9em;
+    font-weight: 400;
+}
+
+@media (min-width: 1024px) {
+    @keyframes copriEScopri {
+        0%{width: 100%; height: 100%;}
+        50%{width: 100%; height: 100%;}
+        100%{width: 40%; height: 100%;}
+    }
+    
+    @keyframes slideInFromLeft {
+        0% {transform: translateX(-100%);}
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .cont{
+        flex-direction: column;
+    }
+    
+    section .cont .imageBox{
+        width: 100%;
+        height: 30%;
+    }
+
+    section .cont .imageBox:before{
+        width: 100%;
+        height: 30%;
+    }
+
+    section .cont .imageBox img{
+        margin-left: 22%;
+        width: 50%;
+    }
+
+    .loginBox, .register1Box, .register2Box, .register3Box{
+        width: 100%;
+        height: 70%;
+    }
+
+    h1{
+        font-weight: 900;
+        font-size: 1.6em;
+    }
+    
+    /* caratteristiche h1 dentro la form */
+    h2{
+        font-weight: 600;
+        font-size: 1.2em;
+    }
+     
+    .inputBox img {
+        width: 3em;
+        height: 3em;
+    }
+
+    @keyframes slideInFromLeft {
+        0% {transform: translateX(-100%);}
+    }
+}
+
+@media (max-width: 480px){
+    
+    .cont{
+        flex-direction: column;
+    }
+    
+    section .cont .imageBox{
+        width: 100%;
+        height: 30%;
+    }
+
+    section .cont .imageBox:before{
+        width: 100%;
+        height: 30%;
+    }
+
+    section .cont .imageBox img{
+        width: 50%;
+    }
+
+    h1{
+        font-weight: 900;
+        font-size: 1.3em;
+    }
+    
+    /* caratteristiche h1 dentro la form */
+    h2{
+        font-weight: 600;
+        font-size: 1em;
+    }
+
+    select{
+        font-size: 0.8em;
+    }
+    .inputBox input{font-size: 0.8em;}
+
+    .inputBox p{font-size: 0.7em;}
+
+    .inputBox img {
+        width: 2em;
+        height: 2em;
+    }
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes changeBorderColor{
+    0%{border-color: #404040;}
+    25%{border-color: #94af00;}
+    50%{border-color: #a1bd04;}
+    75%{border-color: #94af00;}
+    100%{border-color: #404040;}
+}
+
+@keyframes changeIconColor {
+    0%{filter: none;}
+    25%{filter: invert(59%) sepia(72%) saturate(1513%) hue-rotate(32deg) brightness(95%) contrast(101%);}
+    50%{filter: invert(72%) sepia(80%) saturate(1020%) hue-rotate(20deg) brightness(87%) contrast(97%);}
+    75%{filter: invert(59%) sepia(72%) saturate(1513%) hue-rotate(32deg) brightness(95%) contrast(101%);}
+    100%{filter: none;}
+}

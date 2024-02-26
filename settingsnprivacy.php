@@ -15,7 +15,9 @@ $tipoAccount = queryGetAccountType($conn, $usernameSessione);
 
 //prendo tutti i dati dell'utente
 $resQueryGetDataUser = queryGetDataUSer($conn, $usernameSessione);
+
 while($row = mysqli_fetch_assoc($resQueryGetDataUser)){
+
     $email = $row['Email'];
     $password = $row['Password'];
     $nome = $row['Nome'];
@@ -32,6 +34,7 @@ while($row = mysqli_fetch_assoc($resQueryGetDataUser)){
     if($genere == "M") $genereStr = "Maschio";
     else if($genere == "F") $genereStr = "Femmina";
     else $genereStr = "Preferisco non specificare";
+
 }
 
 if(isset($_FILES['fotoProfilo'])){
@@ -61,6 +64,7 @@ if(isset($_FILES['fotoProfilo'])){
 
 if($_POST['noFotoProfilo']) $_SESSION['pathFotoProfilo'] = $pathFotoNavBar;
 
+//modifica dati del profilo
 if($_POST['email']){
     $prevUsername = $_POST['prevUsername'];
     $nuovoUsername = $_POST['username'];
@@ -73,6 +77,13 @@ if($_POST['email']){
     $passwordPrecedente = $_POST['passwordPrecedente'];
     $biografia = $_POST['biografia'];
     $pathFotoProfilo = $_SESSION['pathFotoProfilo'];
+
+    $prevUsername = filter_var($prevUsername, FILTER_SANITIZE_STRING);
+    $nuovoUsername = filter_var($nuovoUsername, FILTER_SANITIZE_STRING);
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $passwordNuova = filter_var($passwordNuova, FILTER_SANITIZE_STRING);
+    $passwordPrecedente = filter_var($passwordPrecedente, FILTER_SANITIZE_STRING);
+    $biografia = filter_var($biografia, FILTER_SANITIZE_STRING);
 
     if($passwordNuova == "") $passwordNuova = $password;
     if((md5($passwordPrecedente) == $password && $passwordNuova != "")) $passwordNuova = md5($_POST['passwordNuovaPassword']);
@@ -97,6 +108,14 @@ if($_POST['prevUsername2']){
     $passwordPrecedente = $_POST['passwordPrecedente'];
     $prevUsername = $_POST['prevUsername2'];
 
+
+    $nome = filter_var($nome, FILTER_SANITIZE_STRING);
+    $cognome = filter_var($cognome, FILTER_SANITIZE_STRING);
+    $telefono = filter_var($telefono, FILTER_SANITIZE_STRING);
+    $passwordPrecedente = filter_var($passwordPrecedente, FILTER_SANITIZE_STRING);
+    $prevUsername = filter_var($prevUsername, FILTER_SANITIZE_STRING);
+  
+
     if(md5($passwordPrecedente) == $password ){
         echo "password corretta";
         $qqueryModUser = "UPDATE Utente SET Nome = \"$nome\", Cognome = \"$cognome\", DataNascita = \"$nuovaData\", Genere = \"$genere\", Telefono = \"$telefono\" WHERE Username = \"$prevUsername\"";
@@ -119,6 +138,8 @@ if($_POST['logout']){
     session_destroy();
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -55,6 +55,13 @@ if($_POST['biografiaProfilo']){
     $dataRegistrazione = $_POST['dataRegistrazione'];
     $usernameProfilo = $_POST['usernameProfilo'];
     $biografiaProfilo = $_POST['biografiaProfilo'];
+
+    $nomeRegistrazione = filter_var($nomeRegistrazione, FILTER_SANITIZE_STRING);
+    $cognomeRegistrazione = filter_var($cognomeRegistrazione, FILTER_SANITIZE_STRING);
+    $emailRegistrazione = filter_var($emailRegistrazione, FILTER_SANITIZE_EMAIL);
+    $usernameProfilo = filter_var($usernameProfilo, FILTER_SANITIZE_STRING);
+    $biografiaProfilo = filter_var($biografiaProfilo, FILTER_SANITIZE_STRING);
+
     $hashedPwd = md5($passwordRegistrazione);
     $token = md5($emailRegistrazione).rand(1111111,999999);
     $_SESSION['token'] = $token;

@@ -7,7 +7,7 @@ let message_reg2 = $('.message_reg2');
 let message_reg3 = $('.message_reg3');
 let message_success_reg = $('.message_success_reg');
 let nomeFotoProfilo, fotoProfilo;
-let service_id = "service_q7jh5cl";
+let service_id = "service_aik4zky";
 let template_id = "template_lqnjs46";
 let user_id = "oLpc_D0KUqrG2Z5ks";
 let toEmail, msgMail, toName;
@@ -146,7 +146,7 @@ async function checkRegister1(){
     /**Mando i dati al server */
     $(".register1Box").hide(1000, function () { 
         $(".register2Box").show(1000, function(){ 
-        $('h2').eq(1).html(replaceWithWhiteSpace($('h2').eq(1).html()));
+            $('h2').eq(1).html(replaceWithWhiteSpace($('h2').eq(1).html()));
         });
     });
 }
@@ -218,6 +218,8 @@ async function checkRegister2(){
 /**Funzione che prende il valore di tutti i campi nella terza parte della registrazione, li controlla per renderli validi e li invia tramite post al file php che li salverà come variabili di sessione */
 async function sendAllData() {
 
+    //da sanificare valori dentro data (meglio se fatto per ogni registerBox)
+    
     let usernameProfilo = $('.usernameProfilo').val();
     let biografiaProfilo = $('.biografiaProfilo').val();
     // let pathFotoProfilo = "https://necular.altervista.org/SocialNetwork/profileImages";

@@ -48,6 +48,8 @@ if(isset($_FILES['fotoCreaPost'])){
 if(isset($_POST['descrizioneCreaPost'])){
 
     $descrizioneCreaPost = $_POST['descrizioneCreaPost'];
+    $descrizioneCreaPost = filter_var($descrizioneCreaPost, FILTER_SANITIZE_STRING);
+
     $dateTime = date('Y/m/d H:i');
     $finalName = $_SESSION['nomeFotoCreaPost'];
     

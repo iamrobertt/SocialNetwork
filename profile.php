@@ -10,34 +10,43 @@ $displaySearchBox = false;
 $usernameSessione = $_SESSION['username'];
 //se viene fatta una get allora lo username darà quello cercato e i dati stampati pure
 //altrimenti significa che l'utente ha richiesto a visualizzazione del suo profilo
-if($_GET['username']) $username = $_GET['username'];
+if($_GET['username']) $username = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['username']);
 else $username = $_SESSION['username'];
 
 $tipoAccount = queryGetAccountType($conn, $username);
 $getTypeFollow = queryGetTypeFOllow($conn, $usernameSessione, $username);
 //query per dati del profilo
 $resQueryProfilo = queryProfilo($conn, $username);
-while($row = mysqli_fetch_assoc($resQueryProfilo)){
-    $biografia = $row['Biografia'];
-    $pathFotoProfilo = $row['Immagine_Profilo'];
+
+if(mysqli_num_rows($resQueryProfilo) == 1){
+
+
+    while($row = mysqli_fetch_assoc($resQueryProfilo)){
+        $biografia = $row['Biografia'];
+        $pathFotoProfilo = $row['Immagine_Profilo'];
+    }
+
+    //query per la foto della navbar, quella per accedere poi a delle opzioni per l'account
+    $pathFotoNavBar = queryFotoProfilo($conn, $usernameSessione);
+
+    //query che conta il numero di post per poi mettere la primary key dinamicamente nel php
+    $countPost = queryContPostUser($conn, $username);
+
+    //query che conta il numero dei follower della persona
+    $contUserFollower = queryContFollowerUser($conn, $username);
+
+    //query che conta il numero dei seguaci della persona
+    $contUserFollowing = queryContFollowing($conn, $username);
+
+    //query che serve per vedere se due utenti si seguono già, nel caso appariranno diverse opzioni
+    $checkFollow = queryCheckFollow($conn, $usernameSessione, $username);
+
+    $typeAccount = queryGetAccountType($conn, $username);
 }
-
-//query per la foto della navbar, quella per accedere poi a delle opzioni per l'account
-$pathFotoNavBar = queryFotoProfilo($conn, $usernameSessione);
-
-//query che conta il numero di post per poi mettere la primary key dinamicamente nel php
-$countPost = queryContPostUser($conn, $username);
-
-//query che conta il numero dei follower della persona
-$contUserFollower = queryContFollowerUser($conn, $username);
-
-//query che conta il numero dei seguaci della persona
-$contUserFollowing = queryContFollowing($conn, $username);
-
-//query che serve per vedere se due utenti si seguono già, nel caso appariranno diverse opzioni
-$checkFollow = queryCheckFollow($conn, $usernameSessione, $username);
-
-$typeAccount = queryGetAccountType($conn, $username);
+else{
+    header("Location: https://necular.altervista.org/SocialNetwork/homePage.php");
+    die();
+}
 
 if($_POST['logout']){
     session_unset();
@@ -63,6 +72,7 @@ if($_POST['utenteDelete']){
 if($_POST['commento']){
 
     $commento = $_POST['commento'];
+    $commento = filter_var($commento, FILTER_SANITIZE_STRING);
     $src = $_POST['src'];
 
     $id_post = queryGetIDPost($conn, $src);

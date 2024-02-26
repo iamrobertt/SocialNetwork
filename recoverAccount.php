@@ -26,6 +26,10 @@
         $email = $_POST['email'];
         $password = $_POST['nuovaPassword'];
         $confermaPassword = $_POST['confermaNuovaPassword'];
+
+        $password = filter_var($password, FILTER_SANITIZE_STRING);
+        $confermaPassword = filter_var($confermaPassword, FILTER_SANITIZE_STRING);
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         
         if($password != "" && $confermaPassword != "" && $password == $confermaPassword){
             queryResetPassword($conn, $email, $password);

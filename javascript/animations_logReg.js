@@ -26,6 +26,14 @@ function onFocusOnBlur(idOrClassName){
     });
 }
 
+
+$('.passwordLogin').on('focus', function(){
+    $('.pandaImg').attr('src', './assets/panda__coperto_trasparente.png')
+});
+
+$('.passwordLogin').on('blur', function(){
+    $('.pandaImg').attr('src', './assets/panda_trasparente.png')
+});
 onFocusOnBlur('.emailLogin');
 onFocusOnBlur('.passwordLogin');
 onFocusOnBlur('.nomeRegistrazione');
@@ -34,3 +42,4 @@ onFocusOnBlur('.emailRegistrazione');
 onFocusOnBlur('.passwordRegistrazione');
 onFocusOnBlur('.passwordRegistrazioneConferma');
 onFocusOnBlur('.telefonoRegistrazione');
+

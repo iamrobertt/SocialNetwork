@@ -142,8 +142,8 @@ function queryGetDataUSer($conn, $usernameSessione){
 }
 
 function queryModUSer($conn, $prevUsername, $nuovoUsername, $email, $password, $nome, $cognome, $nuovaData, $genere, $pathFotoProfilo, $telefono, $biografia){ 
+
     $qqueryModUser = "UPDATE Utente SET Username = \"$nuovoUsername\", Email = \"$email\", Password = \"$password\", Nome = \"$nome\", Cognome = \"$cognome\", DataNascita = \"$nuovaData\", Genere = \"$genere\", Immagine_Profilo = \"$pathFotoProfilo\", Telefono = \"$telefono\", Biografia = \"$biografia\" WHERE Username = \"$prevUsername\"";
-    var_dump($qqueryModUser);
     mysqli_query($conn, $qqueryModUser);
 }
 function queryCheckConfirmEmail($conn, $email, $token){

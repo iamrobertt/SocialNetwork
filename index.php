@@ -104,24 +104,27 @@ if (isset($_POST['submit_login'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <title>Login</title>
-    <link rel="stylesheetasdasdas" href="css/bootstrap.css">
-    <link rel="stylesheetasdasdas" href="css/animations.css">
-    <link rel="stylesheetasdasdas"asdasdas href="css/styleLogin.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/styleLogin.css">
 </head>
 
 <body>
-    <?php if (!$_SESSION['asdasdaslogged']) { ?>
+    <?php if (!$_SESSION['logged']) { ?>
         <section>
-            <div class="conasdasdast">
+            <div class="cont">
                 <!--- Half of The Image -->
-                <div class="iasdasdasmageBox">
+                <div class="imageBox">
                     <img src="assets/Logo.jpeg" alt="Impossibile caricare l'immagine.">
-                </div>asdasdas
+                </div>
 
-                <!--- Half of asdasdasThe Login Form -->
-
+                <!--- Half of The Login Form -->
                 <div class="loginBox">
+                
                     <div class="formBox">
+                        <div class="pandaBox" style="width: 100%; height: auto; justify-content: center;">
+                            <img class="pandaImg" style="width: 100%; height: 100%;" src="./assets/panda_trasparente.png" alt="">
+                        </div>
                         <h1 class="slide-in-bottom-h1">Login</h1>
                         <form action="index.php?nonsense=1" method="post">
                             <div style="display: none;" class="message_success_reg alert alert-success"></div>

@@ -17,6 +17,8 @@ if ($_POST['logout']) {
 if($_POST['commento']){
 
     $commento = $_POST['commento'];
+    $commento = filter_var($commento, FILTER_SANITIZE_STRING);
+
     $src = $_POST['src'];
 
     $id_post = queryGetIDPost($conn, $src);

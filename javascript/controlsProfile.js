@@ -58,62 +58,6 @@ function drawUsersPost(dataPosts){
     else for(let i = 0; i < dateTimePosts.length; i++) postsProfileBox.append(`<div class="postBox"> <div class="descrizionePost"> <img class="fotoPost" src="./postImages/${pathFotoPosts[i]}" alt=""> </div> </div>`);
 }
 
-//se viene fatta una get manda l'username dell'utente che si vuole visualizzare
-//altrimenti significa che l'utente vuole visualizzare il proprio profilo
-if(utenteCercato) sendPostData(urlGetUserPosts, {postsUtente: username}, (data) => {data = JSON.parse(data); drawUsersPost(data)}, () => {});
-else sendPostData(urlGetUserPosts, {postsUtente: "localUser"}, (data) => { data = JSON.parse(data); drawUsersPost(data)}, () => {});
-
-//nel caso l'utente non segua l'utene cercato mostro il bottone per poterlo seguire (controllo fatto in php)
-//se viene clickato invia lo username dell'utente seguito al server che si occuperà di fare un query al database e salvare il follow
-$('.FollowBtn').on('click',async function(){
-    let utenteSeguito;
-    if(utenteCercato) utenteSeguito = username;
-    await sendPostData(currentUrl, {utenteSeguito: utenteSeguito}, () => {window.location.href = currentUrl;}, () => {});
-});
-
-//nel caso l'utente segue gia quella persona mostro il bottone per poter unfolloware (controllo anch'esso fatto in php)
-//se viene clickato invia lo username dell'utente da eliminare al server che si occuperà di faeruna query al database ed eliminare il follow
-$('.unFollowBtn').on('click',async function(){
-    let utenteDelete;
-    if(utenteCercato) utenteDelete = username;
-    await sendPostData(currentUrl, {utenteDelete: utenteDelete}, () => {window.location.href = currentUrl;}, () => {});
-});
-
-$('.modificaProfilo').on('click', function(){
-    window.location.href = "https://necular.altervista.org/SocialNetwork/settingsnprivacy.php";
-});
-
-//finestra a comparsa coi dettagli del post
-$(document).on('click', '.fotoPost', async function() {
-    //visto che il percorso è univoco prendo quello come valore di riferimento
-    let src = $(this).attr('src');
-    src = src.replace('./postImages/', '');
-
-    //mando al server tutti i dati necessari per creare la finestra in sovra impressione coi dettagli del post
-    await sendPostData(urlGetPost, {getPostData: src}, (data) => {dataModal = JSON.parse(data); }, () => {});
-    await sendPostData(urlGetPost, {getCommenti: src}, (data) => {commentiModal = JSON.parse(data); }, () => {});
-    await sendPostData(urlGetPost, {getLike: src}, (data) => {likeModal = JSON.parse(data); }, () => {});
-
-    drawModalPost(dataModal, commentiModal, likeModal);
-
-    $('.modalPost').addClass('active');
-    $('.overlay').addClass('active');
-    $('body').css('overflow', 'hidden');
-});
-
-$(document).on('click', '.chiudiModal', function(){
-    $('.modalPost').removeClass('active');
-    $('.overlay').removeClass('active');
-    $('body').css('overflow', 'auto');
-});
-
-$(document).on('click', '.overlay.active', function(){
-    $('.modalPost').removeClass('active');
-    $('.overlay').removeClass('active');
-    $('body').css('overflow', 'auto');
-});
-
-
 function drawModalPost(dataModalPost, dataModalCommenti, likeModal){
 
     //dati per query del post
@@ -197,8 +141,63 @@ function drawModalPost(dataModalPost, dataModalCommenti, likeModal){
         
     </div>`);
 
-
 }
+
+//se viene fatta una get manda l'username dell'utente che si vuole visualizzare
+//altrimenti significa che l'utente vuole visualizzare il proprio profilo
+if(utenteCercato) sendPostData(urlGetUserPosts, {postsUtente: username}, (data) => {data = JSON.parse(data); drawUsersPost(data)}, () => {});
+else sendPostData(urlGetUserPosts, {postsUtente: "localUser"}, (data) => { data = JSON.parse(data); drawUsersPost(data)}, () => {});
+
+//nel caso l'utente non segua l'utene cercato mostro il bottone per poterlo seguire (controllo fatto in php)
+//se viene clickato invia lo username dell'utente seguito al server che si occuperà di fare un query al database e salvare il follow
+$('.FollowBtn').on('click',async function(){
+    let utenteSeguito;
+    if(utenteCercato) utenteSeguito = username;
+    await sendPostData(currentUrl, {utenteSeguito: utenteSeguito}, () => {window.location.href = currentUrl;}, () => {});
+});
+
+//nel caso l'utente segue gia quella persona mostro il bottone per poter unfolloware (controllo anch'esso fatto in php)
+//se viene clickato invia lo username dell'utente da eliminare al server che si occuperà di faeruna query al database ed eliminare il follow
+$('.unFollowBtn').on('click',async function(){
+    let utenteDelete;
+    if(utenteCercato) utenteDelete = username;
+    await sendPostData(currentUrl, {utenteDelete: utenteDelete}, () => {window.location.href = currentUrl;}, () => {});
+});
+
+$('.modificaProfilo').on('click', function(){
+    window.location.href = "https://necular.altervista.org/SocialNetwork/settingsnprivacy.php";
+});
+
+//finestra a comparsa coi dettagli del post
+$(document).on('click', '.fotoPost', async function() {
+    //visto che il percorso è univoco prendo quello come valore di riferimento
+    let src = $(this).attr('src');
+    src = src.replace('./postImages/', '');
+
+    //mando al server tutti i dati necessari per creare la finestra in sovra impressione coi dettagli del post
+    await sendPostData(urlGetPost, {getPostData: src}, (data) => {dataModal = JSON.parse(data); }, () => {});
+    await sendPostData(urlGetPost, {getCommenti: src}, (data) => {commentiModal = JSON.parse(data); }, () => {});
+    await sendPostData(urlGetPost, {getLike: src}, (data) => {likeModal = JSON.parse(data); }, () => {});
+
+    drawModalPost(dataModal, commentiModal, likeModal);
+
+    $('.modalPost').addClass('active');
+    $('.overlay').addClass('active');
+    $('body').css('overflow', 'hidden');
+});
+
+$(document).on('click', '.chiudiModal', function(){
+    $('.modalPost').removeClass('active');
+    $('.overlay').removeClass('active');
+    $('body').css('overflow', 'auto');
+});
+
+$(document).on('click', '.overlay.active', function(){
+    $('.modalPost').removeClass('active');
+    $('.overlay').removeClass('active');
+    $('body').css('overflow', 'auto');
+});
+
 
 $(document).on('click', '.btnAggiungiCommento', async function(){
     let commento = $(this).prev().val();

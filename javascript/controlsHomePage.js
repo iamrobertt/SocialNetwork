@@ -17,6 +17,7 @@ let srcToCheck;
  */
 function searchPerson() {
     let personaDaCercare = $('.searchInput').val();
+    
     if (personaDaCercare != "") sendPostData(url, { personaDaCercare: personaDaCercare }, (data) => { data = JSON.parse(data); drawUsersSearched(data) }, () => { });
     else drawUsersSearched(undefined);
 }
@@ -102,6 +103,48 @@ $(document).ready(async function () {
     await sendGetData(urlGetFeed, (data) => { data = JSON.parse(data); drawFeed(data); }, () => { });
 });
 
+
+/**
+ * Sanitize a URL.
+ *
+ * Source @braintree/sanitize-url
+ * <https://github.com/braintree/sanitize-url>
+ *
+ * @param {string} url
+ * @return {string}
+ */
+function sanitizeUrl(url) {
+    if (!url) {
+        return "about:blank";
+    }
+ 
+    var invalidProtocolRegex = /^(%20|\s)*(javascript|data|vbscript)/im;
+    var ctrlCharactersRegex = /[^\x20-\x7EÀ-ž]/gim;
+    var urlSchemeRegex = /^([^:]+):/gm;
+    var relativeFirstCharacters = [".", "/"];
+ 
+    function _isRelativeUrlWithoutProtocol(url) {
+        return relativeFirstCharacters.indexOf(url[0]) > -1;
+    }
+ 
+    var sanitizedUrl = url.replace(ctrlCharactersRegex, "").trim();
+    if (_isRelativeUrlWithoutProtocol(sanitizedUrl)) {
+        return sanitizedUrl;
+    }
+ 
+    var urlSchemeParseResults = sanitizedUrl.match(urlSchemeRegex);
+    if (!urlSchemeParseResults) {
+        return sanitizedUrl;
+    }
+ 
+    var urlScheme = urlSchemeParseResults[0];
+    if (invalidProtocolRegex.test(urlScheme)) {
+        return "about:blank";
+    }
+ 
+    return sanitizedUrl;
+}
+
 /**
  * 
  * EVENT LISTENER PER ESEUIRE AZIONI IN BASE A DEGLIE EVENTI PRESTABILITI(QUELLI SOTTO)
@@ -112,7 +155,11 @@ $(document).ready(async function () {
 
 $(document).on('click', '.utenteCercato', function () {
     let username = $(this).find('p').text();
-    window.location.href = `https://necular.altervista.org/SocialNetwork/profile.php?username=${username}`;
+
+    let urlRedirect = `https://necular.altervista.org/SocialNetwork/profile.php?username=${username}`;
+    let sanUrl = sanitizeUrl(urlRedirect);
+
+    window.location.href = sanUrl;
 });
 
 $(document).on('click', '.fotoPostFeed', async function () {
